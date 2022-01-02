@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
           const Text('Main'),
           ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/second');
+              Navigator.pushNamed(context, '/room');
             },
             child: const Text('Launch screen'),
           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../base_view.dart';
+import '../../shared/base_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -8,7 +8,8 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView(
-      title: Text('Main'),
+      title: const Text('Main'),
+      bottomBar: BottomNavigationBar(items: [],),
       child: Column(
         children: [
           const Text('Main'),

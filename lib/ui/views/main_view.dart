@@ -38,7 +38,7 @@ class _MainViewState extends State<MainView> {
       ),
       bottomBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
+        notchMargin: 5,
         child: Container(
           padding: const EdgeInsets.only(left: 20, right: 20),
           height: 60,

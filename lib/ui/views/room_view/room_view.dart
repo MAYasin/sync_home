@@ -7,12 +7,8 @@ class RoomView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseView(
-      bottomBar: BottomNavigationBar(
-        items: [],
-      ),
-      title: Text('Room'),
-      child: Text('Room'),
+    return Container(
+      child: const Text('Room'),
     );
   }
 }

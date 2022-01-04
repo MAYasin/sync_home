@@ -7,9 +7,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseView(
-      title: const Text('Main'),
-      bottomBar: BottomNavigationBar(items: [],),
+    return Container(
       child: Column(
         children: [
           const Text('Main'),

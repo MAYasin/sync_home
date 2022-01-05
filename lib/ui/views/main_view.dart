@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sync_home/constants/style.dart';
 import 'package:sync_home/ui/shared/base_view.dart';
 import 'package:sync_home/ui/views/home_view/home_view.dart';
 import 'package:sync_home/ui/views/room_view/room_view.dart';
@@ -28,7 +29,11 @@ class _MainViewState extends State<MainView> {
         bucket: bucket,
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.mic),
+        child: const Icon(
+          Icons.mic,
+          color: Colors.blue,
+        ),
+        backgroundColor: Colors.white,
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -39,7 +44,7 @@ class _MainViewState extends State<MainView> {
       bottomBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         clipBehavior: Clip.antiAlias,
-        notchMargin: 8,
+        notchMargin: 6,
         child: SizedBox(
           height: 60,
           child: Row(

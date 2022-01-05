@@ -84,7 +84,7 @@ class _MainViewState extends State<MainView> {
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: Icon(
-                          Icons.meeting_room,
+                          Icons.door_front_door,
                           color:
                               _selectedIndex == 1 ? Colors.blue : Colors.grey,
                         ),

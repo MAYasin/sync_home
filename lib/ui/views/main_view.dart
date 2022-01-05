@@ -38,43 +38,51 @@ class _MainViewState extends State<MainView> {
       ),
       bottomBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        notchMargin: 5,
-        child: Container(
-          padding: const EdgeInsets.only(left: 20, right: 20),
+        clipBehavior: Clip.antiAlias,
+        notchMargin: 8,
+        child: SizedBox(
           height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              MaterialButton(
-                onPressed: () {
+              InkWell(
+                highlightColor: Colors.grey[300],
+                onTap: () {
                   setState(() {
                     _selectedIndex = 0;
                   });
                 },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.home,
-                      color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
-                    ),
-                  ],
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.home,
+                        color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              MaterialButton(
-                onPressed: () {
+              InkWell(
+                highlightColor: Colors.grey[300],
+                onTap: () {
                   setState(() {
                     _selectedIndex = 1;
                   });
                 },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.meeting_room,
-                      color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
-                    ),
-                  ],
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.meeting_room,
+                        color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

@@ -66,7 +66,7 @@ class _MainViewState extends State<MainView> {
                         ),
                       ),
                     ],
-                  ),s
+                  ),
                 ),
               ),
               InkWell(

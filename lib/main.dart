@@ -6,9 +6,10 @@ import 'package:sync_home/ui/views/main_view.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    GetMaterialApp(
       title: 'Sync Home',
       theme: theme,
+      home: const MainView(),
       builder: (context, widget) => ResponsiveWrapper.builder(
         const MainView(),
         maxWidth: 2460,

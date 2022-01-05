@@ -6,7 +6,7 @@ import 'package:sync_home/ui/views/main_view.dart';
 
 void main() {
   runApp(
-    GetMaterialApp(
+    MaterialApp(
       title: 'Sync Home',
       theme: theme,
       builder: (context, widget) => ResponsiveWrapper.builder(

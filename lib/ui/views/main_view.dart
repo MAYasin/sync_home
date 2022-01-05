@@ -57,12 +57,16 @@ class _MainViewState extends State<MainView> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.home,
-                        color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Icon(
+                          Icons.home,
+                          color:
+                              _selectedIndex == 0 ? Colors.blue : Colors.grey,
+                        ),
                       ),
                     ],
-                  ),
+                  ),s
                 ),
               ),
               InkWell(
@@ -77,9 +81,13 @@ class _MainViewState extends State<MainView> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.meeting_room,
-                        color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: Icon(
+                          Icons.meeting_room,
+                          color:
+                              _selectedIndex == 1 ? Colors.blue : Colors.grey,
+                        ),
                       ),
                     ],
                   ),

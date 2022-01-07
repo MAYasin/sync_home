@@ -19,7 +19,12 @@ class BaseView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: child),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: child,
+        ),
+      ),
       backgroundColor: Theme.of(context).backgroundColor,
       bottomNavigationBar: bottomBar,
       floatingActionButton: floatingActionButton,
@@ -28,7 +33,11 @@ class BaseView extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         titleSpacing: 0.0,
-        title: title,
+        centerTitle: false,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: title,
+        ),
       ),
     );
   }

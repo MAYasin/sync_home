@@ -38,8 +38,12 @@ class _MainViewState extends State<MainView> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       title: Text(
-        _selectedIndex == 0 ? 'Home' : 'Rooms',
-        style: const TextStyle(color: Colors.black),
+        _selectedIndex == 0 ? 'My Home' : 'Rooms',
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       bottomBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),

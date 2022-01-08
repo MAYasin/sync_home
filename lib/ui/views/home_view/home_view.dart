@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sync_home/ui/components/weather_card/weather_card.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -26,40 +27,9 @@ class HomeView extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            SizedBox(
+            const SizedBox(
               width: double.infinity,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                color: Colors.lightBlue[200],
-                elevation: 0,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      const Text('Johannesburg, South Africa'),
-                      const Text('24 °C'),
-                      Card(
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        color: Colors.lightBlue[600],
-                        child: const Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text(
-                            'Thunderstorm',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              child: WeatherCard(),
             ),
           ],
         ),
@@ -136,7 +106,10 @@ class HomeView extends StatelessWidget {
         GridView.count(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          crossAxisCount: MediaQuery.of(context).orientation == Orientation.portrait ? 3 : 4,
+          crossAxisCount:
+              MediaQuery.of(context).orientation == Orientation.portrait
+                  ? 3
+                  : 4,
           mainAxisSpacing: 20,
           crossAxisSpacing: 20,
           children: [

@@ -6,14 +6,13 @@ import 'package:sync_home/ui/views/main_view_controller.dart';
 
 class MainView extends StatefulWidget {
   MainView({Key? key}) : super(key: key);
-  MainViewController controller = Get.put(MainViewController());
+  final MainViewController controller = Get.put(MainViewController());
 
   @override
   _MainViewState createState() => _MainViewState();
 }
 
 class _MainViewState extends State<MainView> {
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MainViewController>(builder: (_) {
@@ -70,8 +69,8 @@ class _MainViewState extends State<MainView> {
                 InkWell(
                   highlightColor: Colors.grey[300],
                   onTap: () {
-                      HapticFeedback.vibrate();
-                      _.changeTabIndex(1);
+                    HapticFeedback.vibrate();
+                    _.changeTabIndex(1);
                   },
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width / 2,

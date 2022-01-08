@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../shared/base_view.dart';
-
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
@@ -92,10 +90,9 @@ class HomeView extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        Flexible(
-          child: ListView(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
             children: const [
               CircularDeviceButton(),
               SizedBox(width: 20),
@@ -139,10 +136,19 @@ class HomeView extends StatelessWidget {
         GridView.count(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          crossAxisCount: 3,
+          crossAxisCount: MediaQuery.of(context).orientation == Orientation.portrait ? 3 : 4,
           mainAxisSpacing: 20,
           crossAxisSpacing: 20,
           children: [
+            DeviceButton(
+              onTap: () {},
+            ),
+            DeviceButton(
+              onTap: () {},
+            ),
+            DeviceButton(
+              onTap: () {},
+            ),
             DeviceButton(
               onTap: () {},
             ),

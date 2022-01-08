@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../shared/base_view.dart';
 
@@ -8,6 +9,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
           children: [
@@ -90,49 +92,30 @@ class HomeView extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        Row(
-          children: [
-            CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.pink,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.wb_sunny_outlined,
-                ),
-              ),
-            ),
-            CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.pink,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.wb_sunny_outlined,
-                ),
-              ),
-            ),
-            CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.pink,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.wb_sunny_outlined,
-                ),
-              ),
-            ),
-            CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.pink,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.wb_sunny_outlined,
-                ),
-              ),
-            ),
-          ],
+        Flexible(
+          child: ListView(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            children: const [
+              CircularDeviceButton(),
+              SizedBox(width: 20),
+              CircularDeviceButton(),
+              SizedBox(width: 20),
+              CircularDeviceButton(),
+              SizedBox(width: 20),
+              CircularDeviceButton(),
+              SizedBox(width: 20),
+              CircularDeviceButton(),
+              SizedBox(width: 20),
+              CircularDeviceButton(),
+              SizedBox(width: 20),
+              CircularDeviceButton(),
+              SizedBox(width: 20),
+              CircularDeviceButton(),
+              SizedBox(width: 20),
+              CircularDeviceButton(),
+            ],
+          ),
         ),
         const SizedBox(
           height: 20,
@@ -154,6 +137,7 @@ class HomeView extends StatelessWidget {
           height: 20,
         ),
         GridView.count(
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           crossAxisCount: 3,
           mainAxisSpacing: 20,
@@ -184,6 +168,43 @@ class HomeView extends StatelessWidget {
   }
 }
 
+class CircularDeviceButton extends StatelessWidget {
+  const CircularDeviceButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 30,
+          backgroundColor: Colors.pink[300],
+          child: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.wb_sunny_outlined,
+              color: Colors.black,
+              size: 30,
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(
+          'Lights',
+          style: TextStyle(
+            color: Colors.grey[800],
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class DeviceButton extends StatefulWidget {
   const DeviceButton({
     Key? key,
@@ -204,6 +225,7 @@ class _DeviceButtonState extends State<DeviceButton> {
     return GestureDetector(
       onTap: () {
         widget.onTap;
+        HapticFeedback.vibrate();
         setState(() {
           toggled = !toggled;
         });

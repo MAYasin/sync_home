@@ -9,9 +9,9 @@ void main() {
     GetMaterialApp(
       title: 'Sync Home',
       theme: theme,
-      home: const MainView(),
+      home: MainView(),
       builder: (context, widget) => ResponsiveWrapper.builder(
-        const MainView(),
+        MainView(),
         maxWidth: 2460,
         minWidth: 480,
         defaultScale: true,

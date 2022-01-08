@@ -7,6 +7,7 @@ class WeatherView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const BaseView(
+      centerTitle: true,
       title: Text(
         'Weather',
         style: TextStyle(

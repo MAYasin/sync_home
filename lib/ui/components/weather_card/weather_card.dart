@@ -13,7 +13,8 @@ class WeatherCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.to(
-          HomeView(),
+          const WeatherView(),
+          transition: Transition.rightToLeft,
         );
       },
       child: Card(

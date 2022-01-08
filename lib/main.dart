@@ -9,9 +9,8 @@ void main() {
     GetMaterialApp(
       title: 'Sync Home',
       theme: theme,
-      home: MainView(),
       builder: (context, widget) => ResponsiveWrapper.builder(
-        MainView(),
+        ClampingScrollWrapper.builder(context, widget!),
         maxWidth: 2460,
         minWidth: 480,
         defaultScale: true,
@@ -23,6 +22,7 @@ void main() {
         ],
         background: Container(color: Colors.blue),
       ),
+      home: MainView(),
       debugShowCheckedModeBanner: false,
     ),
   );

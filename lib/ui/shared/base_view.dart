@@ -7,7 +7,8 @@ class BaseView extends StatelessWidget {
       this.title,
       this.bottomBar,
       this.floatingActionButton,
-      this.floatingActionButtonLocation})
+      this.floatingActionButtonLocation,
+      this.centerTitle = false})
       : super(key: key);
 
   final Widget child;
@@ -15,6 +16,7 @@ class BaseView extends StatelessWidget {
   final Widget? bottomBar;
   final Widget? floatingActionButton;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
+  final bool centerTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +34,13 @@ class BaseView extends StatelessWidget {
       floatingActionButton: floatingActionButton,
       floatingActionButtonLocation: floatingActionButtonLocation,
       appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black, //change your color here
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         titleSpacing: 0.0,
-        centerTitle: false,
+        centerTitle: centerTitle,
         title: Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: title,

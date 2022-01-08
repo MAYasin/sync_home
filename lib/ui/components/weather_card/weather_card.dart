@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sync_home/ui/shared/weather_view/weather_view.dart';
-import 'package:sync_home/ui/views/home_view/home_view.dart';
 
 class WeatherCard extends StatelessWidget {
   const WeatherCard({

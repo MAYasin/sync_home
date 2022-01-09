@@ -64,23 +64,59 @@ class HomeView extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: const [
-              CircularDeviceButton(),
+              CircularDeviceButton(
+                title: 'Lights',
+                icon: Icons.wb_sunny_outlined,
+                color: Colors.amber,
+              ),
               SizedBox(width: 20),
-              CircularDeviceButton(),
+              CircularDeviceButton(
+                title: 'CCTV',
+                icon: Icons.camera_outdoor_outlined,
+                color: Colors.purple,
+              ),
               SizedBox(width: 20),
-              CircularDeviceButton(),
+              CircularDeviceButton(
+                title: 'Wi-Fi',
+                icon: Icons.wifi_outlined,
+                color: Colors.blue,
+              ),
               SizedBox(width: 20),
-              CircularDeviceButton(),
+              CircularDeviceButton(
+                title: 'Media',
+                icon: Icons.speaker_outlined,
+                color: Colors.green,
+              ),
               SizedBox(width: 20),
-              CircularDeviceButton(),
+              CircularDeviceButton(
+                title: 'Thermostat',
+                icon: Icons.thermostat_outlined,
+                color: Colors.pink,
+              ),
               SizedBox(width: 20),
-              CircularDeviceButton(),
+              CircularDeviceButton(
+                title: 'CCTV',
+                icon: Icons.camera_outdoor_outlined,
+                color: Colors.purple,
+              ),
               SizedBox(width: 20),
-              CircularDeviceButton(),
+              CircularDeviceButton(
+                title: 'Wi-Fi',
+                icon: Icons.wifi_outlined,
+                color: Colors.blue,
+              ),
               SizedBox(width: 20),
-              CircularDeviceButton(),
+              CircularDeviceButton(
+                title: 'Media',
+                icon: Icons.speaker_outlined,
+                color: Colors.green,
+              ),
               SizedBox(width: 20),
-              CircularDeviceButton(),
+              CircularDeviceButton(
+                title: 'Thermostat',
+                icon: Icons.thermostat_outlined,
+                color: Colors.pink,
+              ),
             ],
           ),
         ),
@@ -150,7 +186,14 @@ class HomeView extends StatelessWidget {
 class CircularDeviceButton extends StatelessWidget {
   const CircularDeviceButton({
     Key? key,
+    required this.title,
+    required this.icon,
+    required this.color,
   }) : super(key: key);
+
+  final String title;
+  final IconData icon;
+  final MaterialColor color;
 
   @override
   Widget build(BuildContext context) {
@@ -158,11 +201,11 @@ class CircularDeviceButton extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 30,
-          backgroundColor: Colors.pink[300],
+          backgroundColor: color[100],
           child: IconButton(
             onPressed: () {},
-            icon: const Icon(
-              Icons.wb_sunny_outlined,
+            icon: Icon(
+              icon,
               color: Colors.black,
               size: 30,
             ),
@@ -172,7 +215,7 @@ class CircularDeviceButton extends StatelessWidget {
           height: 10,
         ),
         Text(
-          'Lights',
+          title,
           style: TextStyle(
             color: Colors.grey[800],
             fontSize: 15,

@@ -17,8 +17,8 @@ void main() {
         breakpoints: [
           const ResponsiveBreakpoint.resize(480, name: MOBILE),
           const ResponsiveBreakpoint.autoScaleDown(800, name: TABLET),
-          const ResponsiveBreakpoint.autoScaleDown(1000, name: DESKTOP),
-          const ResponsiveBreakpoint.autoScale(2460, name: '4K'),
+          const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+          const ResponsiveBreakpoint.resize(2460, name: '4K'),
         ],
         background: Container(color: Colors.blue),
       ),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:sync_home/shared/enums/app_state.dart';
 import 'package:sync_home/ui/shared/base_view.dart';
 import 'package:weather/weather.dart';
-
-enum AppState { NOT_DOWNLOADED, DOWNLOADING, FINISHED_DOWNLOADING }
 
 class WeatherView extends StatefulWidget {
   const WeatherView({Key? key}) : super(key: key);
@@ -16,20 +15,20 @@ class _WeatherViewState extends State<WeatherView> {
   String key = '856822fd8e22db5e1ba48c0e7d69844a';
   late WeatherFactory ws;
   List<Weather> _data = [];
-  AppState _state = AppState.NOT_DOWNLOADED;
+  AppState _state = AppState.notDownloaded;
   double? lat, lon;
 
   @override
   void initState() {
     super.initState();
-    ws = new WeatherFactory(key);
+    ws = WeatherFactory(key);
   }
 
   void queryForecast() async {
     /// Removes keyboard
     FocusScope.of(context).requestFocus(FocusNode());
     setState(() {
-      _state = AppState.DOWNLOADING;
+      _state = AppState.downloading;
     });
 
     Position pos = await _determinePosition();
@@ -39,7 +38,7 @@ class _WeatherViewState extends State<WeatherView> {
     List<Weather> forecasts = await ws.fiveDayForecastByLocation(lat!, lon!);
     setState(() {
       _data = forecasts;
-      _state = AppState.FINISHED_DOWNLOADING;
+      _state = AppState.finishedDownloading;
     });
   }
 
@@ -48,7 +47,7 @@ class _WeatherViewState extends State<WeatherView> {
     FocusScope.of(context).requestFocus(FocusNode());
 
     setState(() {
-      _state = AppState.DOWNLOADING;
+      _state = AppState.downloading;
     });
 
     Position pos = await _determinePosition();
@@ -58,7 +57,7 @@ class _WeatherViewState extends State<WeatherView> {
     Weather weather = await ws.currentWeatherByLocation(lat!, lon!);
     setState(() {
       _data = [weather];
-      _state = AppState.FINISHED_DOWNLOADING;
+      _state = AppState.finishedDownloading;
     });
   }
 
@@ -108,9 +107,9 @@ class _WeatherViewState extends State<WeatherView> {
     );
   }
 
-  Widget _resultView() => _state == AppState.FINISHED_DOWNLOADING
+  Widget _resultView() => _state == AppState.finishedDownloading
       ? contentFinishedDownload()
-      : _state == AppState.DOWNLOADING
+      : _state == AppState.downloading
           ? contentDownloading()
           : contentNotDownloaded();
 

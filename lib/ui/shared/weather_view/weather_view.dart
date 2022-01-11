@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sync_home/shared/enums/app_state.dart';
 import 'package:sync_home/ui/shared/base_view.dart';
 import 'package:sync_home/ui/shared/weather_view/weather_view_controller.dart';
 

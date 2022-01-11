@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:sync_home/shared/enums/app_state.dart';
 import 'package:sync_home/shared/services/geolocation_service.dart';
 import 'package:weather/weather.dart';
 

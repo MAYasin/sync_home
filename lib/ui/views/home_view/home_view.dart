@@ -27,7 +27,7 @@ class HomeView extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const SizedBox(
+            SizedBox(
               width: double.infinity,
               child: WeatherCard(),
             ),

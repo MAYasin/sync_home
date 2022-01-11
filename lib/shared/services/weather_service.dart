@@ -4,12 +4,10 @@ import 'package:weather/weather.dart';
 
 class WeatherService {
   String key = '856822fd8e22db5e1ba48c0e7d69844a';
-  late WeatherFactory ws;
+  late WeatherFactory ws = WeatherFactory(key);
   double? lat, lon;
 
-  WeatherService() {
-    ws = WeatherFactory(key);
-  }
+  WeatherService();
 
   Future<List<dynamic>> queryForecast() async {
     Position pos = await GeolocationService.determinePosition();

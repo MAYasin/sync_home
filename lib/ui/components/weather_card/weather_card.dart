@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sync_home/ui/components/weather_card/weather_card_controller.dart';
 import 'package:sync_home/ui/shared/weather_view/weather_view.dart';
 
 class WeatherCard extends StatelessWidget {
-  const WeatherCard({
+  WeatherCard({
     Key? key,
   }) : super(key: key);
+
+  final WeatherCardController _weatherCardController =
+      Get.put(WeatherCardController());
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Get.to(
-          WeatherView(),
+          const WeatherView(),
           transition: Transition.rightToLeft,
         );
       },
@@ -40,18 +44,32 @@ class WeatherCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    children: const [
-                      Icon(
+                    children: [
+                      const Icon(
                         Icons.location_pin,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 2,
                       ),
-                      Text(
-                        'Johannesburg, South Africa',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
+                      Obx(
+                        () => Text(
+                          _weatherCardController.getWeather().isNotEmpty
+                              ? _weatherCardController
+                                      .getWeather()
+                                      .first
+                                      .areaName
+                                      .toString() +
+                                  ', ' +
+                                  _weatherCardController
+                                      .getWeather()
+                                      .first
+                                      .country
+                                      .toString()
+                              : 'error',
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                          ),
                         ),
                       ),
                     ],
@@ -61,9 +79,17 @@ class WeatherCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        '24',
-                        style: TextStyle(
+                      Text(
+                        _weatherCardController.getWeather().isNotEmpty
+                            ? _weatherCardController
+                                .getWeather()
+                                .first
+                                .temperature!
+                                .celsius!
+                                .toStringAsFixed(1)
+                                .toString()
+                            : 'error',
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 40,
                           fontWeight: FontWeight.bold,

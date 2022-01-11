@@ -40,7 +40,7 @@ class WeatherCard extends StatelessWidget {
                         _.getWeather().isNotEmpty
                             ? WeatherUIService.getWeather(
                                 _.getWeather().first.weatherIcon.toString())
-                            : 'assets/icon/weather/wind.png',
+                            : 'assets/icon/weather/mist.png',
                         width: 120,
                         height: 120,
                         scale: 0.5,

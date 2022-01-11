@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:sync_home/shared/services/ui_services/weather_ui_service.dart';
 import 'package:sync_home/ui/components/weather_card/weather_card_controller.dart';
 import 'package:sync_home/ui/shared/weather_view/weather_view.dart';
 
@@ -36,7 +37,10 @@ class WeatherCard extends StatelessWidget {
                 : Row(
                     children: [
                       Image.asset(
-                        'assets/icon/weather/wind.png',
+                        _.getWeather().isNotEmpty
+                            ? WeatherUIService.getWeather(
+                                _.getWeather().first.weatherIcon.toString())
+                            : 'assets/icon/weather/wind.png',
                         width: 120,
                         height: 120,
                         scale: 0.5,

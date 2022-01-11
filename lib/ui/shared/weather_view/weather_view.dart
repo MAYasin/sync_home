@@ -5,93 +5,65 @@ import 'package:sync_home/ui/shared/base_view.dart';
 import 'package:sync_home/ui/shared/weather_view/weather_view_controller.dart';
 
 class WeatherView extends StatefulWidget {
-  WeatherView({Key? key}) : super(key: key);
-
-  final WeatherViewController weatherViewController =
-      Get.put(WeatherViewController());
+  const WeatherView({Key? key}) : super(key: key);
 
   @override
   State<WeatherView> createState() => _WeatherViewState();
 }
 
 class _WeatherViewState extends State<WeatherView> {
+  final WeatherViewController _weatherViewController =
+      Get.put(WeatherViewController());
+
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<WeatherViewController>(builder: (_) {
-      return BaseView(
-        centerTitle: true,
-        title: const Text(
-          'Weather',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
+    return BaseView(
+      centerTitle: true,
+      title: const Text(
+        'Weather',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      child: ListView(
+        shrinkWrap: true,
+        children: <Widget>[
+          const Text(
+            'current weather:',
+            style: TextStyle(fontSize: 20),
           ),
-        ),
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.all(5),
-                  child: TextButton(
-                    child: const Text(
-                      'Fetch weather',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () {
-                      _.getWeather();
-                      print('click');
-                    },
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.red)),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(5),
-                  child: TextButton(
-                    child: const Text(
-                      'Fetch forecast',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: _.getForecast(),
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.blue)),
-                  ),
-                )
-              ],
+          Obx(
+            () => ListView.builder(
+              shrinkWrap: true,
+              itemCount: _weatherViewController.weather.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: Text(_weatherViewController.weather[index].toString()),
+                );
+              },
             ),
-            const Text(
-              'Output:',
-              style: TextStyle(fontSize: 20),
+          ),
+          const Text(
+            'Forecast:',
+            style: TextStyle(fontSize: 20),
+          ),
+          Obx(
+            () => ListView.builder(
+              shrinkWrap: true,
+              itemCount: _weatherViewController.forecast.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child:
+                      Text(_weatherViewController.forecast[index].toString()),
+                );
+              },
             ),
-            const Divider(
-              height: 20.0,
-              thickness: 2.0,
-            ),
-            SizedBox(
-                child: _.getAppState() == AppState.finishedDownloading
-                    ? ListView.separated(
-                        shrinkWrap: true,
-                        itemCount: _.getResult().length,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            title: Text(_.getResult()[index].toString()),
-                          );
-                        },
-                        separatorBuilder: (context, index) {
-                          return const Divider();
-                        },
-                      )
-                    : _.getAppState() == AppState.downloading
-                        ? contentDownloading()
-                        : contentNotDownloaded()),
-          ],
-        ),
-      );
-    });
+          ),
+        ],
+      ),
+    );
   }
 }
 

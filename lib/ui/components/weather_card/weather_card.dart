@@ -155,10 +155,16 @@ class WeatherCard extends StatelessWidget {
                               child: Text(
                                 _.getWeather().isNotEmpty
                                     ? _
-                                        .getWeather()
-                                        .first
-                                        .weatherMain
-                                        .toString()
+                                            .getWeather()
+                                            .first
+                                            .weatherMain
+                                            .toString() +
+                                        ', ' +
+                                        _
+                                            .getWeather()
+                                            .first
+                                            .weatherDescription
+                                            .toString()
                                     : 'error',
                                 style: const TextStyle(
                                   color: Colors.white,

@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sync_home/shared/services/weather_service.dart';
 import 'package:sync_home/ui/shared/base_view.dart';
 import 'package:sync_home/ui/views/main_view_controller.dart';
 
 class MainView extends StatefulWidget {
   MainView({Key? key}) : super(key: key);
   final MainViewController controller = Get.put(MainViewController());
+  WeatherService weatherService = Get.put(WeatherService());
 
   @override
   _MainViewState createState() => _MainViewState();
 }
 
 class _MainViewState extends State<MainView> {
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MainViewController>(builder: (_) {

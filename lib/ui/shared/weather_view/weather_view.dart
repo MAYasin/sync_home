@@ -22,19 +22,63 @@ class WeatherView extends StatelessWidget {
           ),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Text(
-              'current weather:',
-              style: TextStyle(fontSize: 20),
+            Stack(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Image.asset(
+                    'assets/icon/weather/clear-day.png',
+                    height: 260,
+                    width: 260,
+                    scale: 0.3,
+                  ),
+                ),
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * (60 / 100),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: _.weather.length,
+                        itemBuilder: (context, index) {
+                          return SizedBox(
+                              child: Column(
+                            children: [
+                              Text(_.weather[index].toString()),
+                              Text(
+                                _.getWeather(index).areaName.toString() +
+                                    ', ' +
+                                    _.getWeather(index).country.toString(),
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                _.getWeather(index).date!.toIso8601String() +
+                                    ', ' +
+                                    _.getWeather(index).country.toString(),
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ));
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: _.weather.length,
-              itemBuilder: (context, index) {
-                return Text(_.weather[index].toString());
-              },
-            ),
+
+            /* 
             const Text(
               'Forecast:',
               style: TextStyle(fontSize: 20),
@@ -46,7 +90,7 @@ class WeatherView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Text(_.forecast[index].toString());
               },
-            ),
+            ), */
           ],
         ),
       );

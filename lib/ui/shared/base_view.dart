@@ -25,7 +25,8 @@ class BaseView extends StatelessWidget {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: child,
+            child: SizedBox(
+                width: MediaQuery.of(context).size.width, child: child),
           ),
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sync_home/shared/services/weather_service.dart';
+import 'package:weather/weather.dart';
 
 class WeatherViewController extends GetxController {
   final WeatherService _weatherService = Get.find();
@@ -16,5 +17,8 @@ class WeatherViewController extends GetxController {
           forecast.value = value,
           update(),
         });
+  }
+  Weather getWeather(int index) {
+    return weather.cast<Weather>()[index];
   }
 }

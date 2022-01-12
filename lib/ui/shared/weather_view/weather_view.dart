@@ -136,7 +136,13 @@ class WeatherView extends StatelessWidget {
                                   Column(
                                     children: [
                                       Image.asset(
-                                        'assets/icon/weather/clear-day.png',
+                                        _.getWeather().isNotEmpty
+                                            ? WeatherUIService.getWeather(_
+                                                .getWeather()
+                                                .first
+                                                .weatherIcon
+                                                .toString())
+                                            : 'assets/icon/weather/mist.png',
                                         height: 120,
                                         width: 120,
                                         scale: 0.3,

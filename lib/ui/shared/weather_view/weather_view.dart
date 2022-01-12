@@ -164,7 +164,10 @@ class WeatherView extends StatelessWidget {
                           ),
                         )
                       : const Text('ERROR'),
-                  const WeatherChart(),
+                  const Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: WeatherChart(),
+                  ),
                 ],
               ),
             ),

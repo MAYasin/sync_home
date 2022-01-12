@@ -15,7 +15,11 @@ class WeatherView extends StatelessWidget {
     return GetBuilder<WeatherViewController>(builder: (_) {
       return BaseView(
         padding: 0,
-        backgroundColor: Colors.blue.shade700,
+        backgroundColor: _.getWeather().isNotEmpty
+            ? _.getWeather().first.weatherIcon!.endsWith('d')
+                ? Colors.blue.shade700
+                : Colors.purple.shade700
+            : Colors.red.shade700,
         centerTitle: true,
         title: const Text(
           'Weather',
@@ -35,7 +39,11 @@ class WeatherView extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomRight,
                   colors: [
-                    Colors.blue.shade700,
+                    _.getWeather().isNotEmpty
+                        ? _.getWeather().first.weatherIcon!.endsWith('d')
+                            ? Colors.blue.shade700
+                            : Colors.purple.shade700
+                        : Colors.red.shade700,
                     Colors.white54,
                   ],
                 ),

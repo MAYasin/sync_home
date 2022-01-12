@@ -18,7 +18,7 @@ class WeatherViewController extends GetxController {
           update(),
         });
   }
-  Weather getWeather(int index) {
-    return weather.cast<Weather>()[index];
+  List<Weather> getWeather() {
+    return weather.cast<Weather>();
   }
 }

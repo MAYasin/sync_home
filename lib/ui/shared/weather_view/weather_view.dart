@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sync_home/shared/services/ui_services/date_ui_service.dart';
+import 'package:sync_home/shared/services/ui_services/weather_ui_service.dart';
 import 'package:sync_home/ui/shared/base_view.dart';
 import 'package:sync_home/ui/shared/weather_view/weather_view_controller.dart';
 
@@ -12,6 +14,8 @@ class WeatherView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<WeatherViewController>(builder: (_) {
       return BaseView(
+        padding: 0,
+        backgroundColor: Colors.blue.shade700,
         centerTitle: true,
         title: const Text(
           'Weather',
@@ -22,75 +26,142 @@ class WeatherView extends StatelessWidget {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Stack(
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Image.asset(
-                    'assets/icon/weather/clear-day.png',
-                    height: 260,
-                    width: 260,
-                    scale: 0.3,
-                  ),
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 90.58 / 100,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Colors.blue.shade700,
+                    Colors.white54,
+                  ],
                 ),
-                Positioned.fill(
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * (60 / 100),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: _.weather.length,
-                        itemBuilder: (context, index) {
-                          return SizedBox(
-                              child: Column(
+              ),
+              child: Column(
+                children: [
+                  _.getWeather().isNotEmpty
+                      ? Padding(
+                          padding: const EdgeInsets.all(40),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(_.weather[index].toString()),
                               Text(
-                                _.getWeather(index).areaName.toString() +
-                                    ', ' +
-                                    _.getWeather(index).country.toString(),
+                                DateUiService.parseDate(DateTime.parse(_
+                                    .getWeather()
+                                    .first
+                                    .date!
+                                    .toIso8601String())),
                                 style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              Text(
-                                _.getWeather(index).date!.toIso8601String() +
-                                    ', ' +
-                                    _.getWeather(index).country.toString(),
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        _
+                                                .getWeather()
+                                                .first
+                                                .areaName
+                                                .toString() +
+                                            ', ' +
+                                            _
+                                                .getWeather()
+                                                .first
+                                                .country
+                                                .toString(),
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            _
+                                                .getWeather()
+                                                .first
+                                                .temperature!
+                                                .celsius!
+                                                .toStringAsFixed(1)
+                                                .toString(),
+                                            style: const TextStyle(
+                                              fontSize: 80,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 5,
+                                          ),
+                                          const Text(
+                                            '°C',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 40,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/icon/weather/clear-day.png',
+                                        height: 120,
+                                        width: 120,
+                                        scale: 0.3,
+                                      ),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(
+                                        _
+                                            .getWeather()
+                                            .first
+                                            .weatherDescription
+                                            .toString(),
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ],
-                          ));
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                          ),
+                        )
+                      : const Text('ERROR'),
+                ],
+              ),
             ),
-
-            /* 
-            const Text(
-              'Forecast:',
-              style: TextStyle(fontSize: 20),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(color: Colors.white),
             ),
-            ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: _.forecast.length,
-              itemBuilder: (context, index) {
-                return Text(_.forecast[index].toString());
-              },
-            ), */
           ],
         ),
       );

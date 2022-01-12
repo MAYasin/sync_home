@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sync_home/constants/style.dart';
 
 class BaseView extends StatelessWidget {
   const BaseView(
@@ -8,7 +9,9 @@ class BaseView extends StatelessWidget {
       this.bottomBar,
       this.floatingActionButton,
       this.floatingActionButtonLocation,
-      this.centerTitle = false})
+      this.centerTitle = false,
+      this.backgroundColor = Colors.white,
+      this.padding = 20.0})
       : super(key: key);
 
   final Widget child;
@@ -17,6 +20,8 @@ class BaseView extends StatelessWidget {
   final Widget? floatingActionButton;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
   final bool centerTitle;
+  final Color backgroundColor;
+  final double padding;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +29,13 @@ class BaseView extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(padding),
             child: SizedBox(
                 width: MediaQuery.of(context).size.width, child: child),
           ),
         ),
       ),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: backgroundColor,
       bottomNavigationBar: bottomBar,
       floatingActionButton: floatingActionButton,
       floatingActionButtonLocation: floatingActionButtonLocation,

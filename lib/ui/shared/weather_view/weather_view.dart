@@ -19,7 +19,7 @@ class WeatherView extends StatelessWidget {
         backgroundColor: _.getWeather().isNotEmpty
             ? _.getWeather().first.weatherIcon!.endsWith('d')
                 ? Colors.blue.shade700
-                : Colors.purple.shade700
+                : Colors.purple.shade600
             : Colors.red.shade700,
         centerTitle: true,
         title: const Text(
@@ -43,7 +43,7 @@ class WeatherView extends StatelessWidget {
                     _.getWeather().isNotEmpty
                         ? _.getWeather().first.weatherIcon!.endsWith('d')
                             ? Colors.blue.shade700
-                            : Colors.purple.shade700
+                            : Colors.purple.shade600
                         : Colors.red.shade700,
                     Colors.white54,
                   ],

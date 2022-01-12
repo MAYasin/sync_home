@@ -21,8 +21,7 @@ class WeatherView extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        child: ListView(
-          shrinkWrap: true,
+        child: Column(
           children: <Widget>[
             const Text(
               'current weather:',
@@ -30,11 +29,10 @@ class WeatherView extends StatelessWidget {
             ),
             ListView.builder(
               shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: _.weather.length,
               itemBuilder: (context, index) {
-                return Card(
-                  child: Text(_.weather[index].toString()),
-                );
+                return Text(_.weather[index].toString());
               },
             ),
             const Text(
@@ -42,12 +40,11 @@ class WeatherView extends StatelessWidget {
               style: TextStyle(fontSize: 20),
             ),
             ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: _.forecast.length,
               itemBuilder: (context, index) {
-                return Card(
-                  child: Text(_.forecast[index].toString()),
-                );
+                return Text(_.forecast[index].toString());
               },
             ),
           ],

@@ -19,7 +19,7 @@ class WeatherCard extends StatelessWidget {
       return GestureDetector(
         onTap: () {
           Get.to(
-            const WeatherView(),
+            () => WeatherView(),
             transition: Transition.rightToLeft,
           );
         },

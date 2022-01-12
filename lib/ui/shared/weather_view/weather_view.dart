@@ -4,6 +4,7 @@ import 'package:sync_home/shared/services/ui_services/date_ui_service.dart';
 import 'package:sync_home/shared/services/ui_services/weather_ui_service.dart';
 import 'package:sync_home/ui/shared/base_view.dart';
 import 'package:sync_home/ui/shared/weather_view/weather_view_controller.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class WeatherView extends StatelessWidget {
   WeatherView({Key? key}) : super(key: key);
@@ -163,6 +164,7 @@ class WeatherView extends StatelessWidget {
                           ),
                         )
                       : const Text('ERROR'),
+                  const WeatherChart(),
                 ],
               ),
             ),
@@ -175,4 +177,33 @@ class WeatherView extends StatelessWidget {
       );
     });
   }
+}
+
+class WeatherChart extends StatelessWidget {
+  const WeatherChart({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final List<SalesData> chartData = [
+      SalesData(DateTime.now(), 35),
+      SalesData(DateTime.now(), 28),
+      SalesData(DateTime.now(), 34),
+    ];
+    return SfCartesianChart(primaryXAxis: DateTimeAxis(), series: <ChartSeries>[
+      LineSeries<SalesData, DateTime>(
+          dataSource: chartData,
+          // Dash values for line
+          dashArray: <double>[5, 5],
+          xValueMapper: (SalesData sales, _) => sales.year,
+          yValueMapper: (SalesData sales, _) => sales.sales)
+    ]);
+  }
+}
+
+class SalesData {
+  SalesData(this.year, this.sales);
+  final DateTime year;
+  final double sales;
 }

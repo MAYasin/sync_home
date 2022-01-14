@@ -18,55 +18,49 @@ class AllDeviceView extends StatelessWidget {
         ),
       ),
       child: Wrap(
+        spacing: 35,
+        runSpacing: 20,
         children: const [
           CircularDeviceButton(
             title: 'Lights',
             icon: Icons.wb_sunny_outlined,
             color: Colors.amber,
           ),
-          SizedBox(width: 20),
           CircularDeviceButton(
             title: 'CCTV',
             icon: Icons.camera_outdoor_outlined,
             color: Colors.purple,
           ),
-          SizedBox(width: 20),
           CircularDeviceButton(
             title: 'Wi-Fi',
             icon: Icons.wifi_outlined,
             color: Colors.blue,
           ),
-          SizedBox(width: 20),
           CircularDeviceButton(
             title: 'Media',
             icon: Icons.speaker_outlined,
             color: Colors.green,
           ),
-          SizedBox(width: 20),
           CircularDeviceButton(
             title: 'Thermostat',
             icon: Icons.thermostat_outlined,
             color: Colors.pink,
           ),
-          SizedBox(width: 20),
           CircularDeviceButton(
             title: 'CCTV',
             icon: Icons.camera_outdoor_outlined,
             color: Colors.purple,
           ),
-          SizedBox(width: 20),
           CircularDeviceButton(
             title: 'Wi-Fi',
             icon: Icons.wifi_outlined,
             color: Colors.blue,
           ),
-          SizedBox(width: 20),
           CircularDeviceButton(
             title: 'Media',
             icon: Icons.speaker_outlined,
             color: Colors.green,
           ),
-          SizedBox(width: 20),
           CircularDeviceButton(
             title: 'Thermostat',
             icon: Icons.thermostat_outlined,

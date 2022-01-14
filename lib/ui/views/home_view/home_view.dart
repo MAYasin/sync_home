@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:sync_home/ui/components/button/buttons.dart';
 import 'package:sync_home/ui/components/weather_card/weather_card.dart';
+import 'package:sync_home/ui/shared/all_device_view/all_device_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -47,7 +49,10 @@ class HomeView extends StatelessWidget {
             ),
             InkWell(
               borderRadius: BorderRadius.circular(5),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const AllDeviceView(),
+                    transition: Transition.rightToLeft);
+              },
               child: const Padding(
                 padding: EdgeInsets.only(top: 3, bottom: 3, left: 8, right: 8),
                 child: Text(

@@ -15,32 +15,37 @@ class CircularDeviceButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: color[100],
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              icon,
-              color: Colors.black,
-              size: 30,
+    return SizedBox(
+      width: 60,
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundColor: color[100],
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                icon,
+                color: Colors.black,
+                size: 30,
+              ),
             ),
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          title,
-          style: TextStyle(
-            color: Colors.grey[800],
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
+          const SizedBox(
+            height: 10,
           ),
-        ),
-      ],
+          Text(
+            title,
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: Colors.grey[800],
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

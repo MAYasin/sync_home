@@ -18,8 +18,8 @@ class AllDeviceView extends StatelessWidget {
         ),
       ),
       child: Wrap(
-        spacing: 35,
-        runSpacing: 20,
+        spacing: 40,
+        runSpacing: 35,
         children: const [
           CircularDeviceButton(
             title: 'Lights',

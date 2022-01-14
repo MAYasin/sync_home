@@ -16,7 +16,7 @@ class CircularDeviceButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 60,
+      width: 80,
       child: Column(
         children: [
           CircleAvatar(
@@ -37,7 +37,6 @@ class CircularDeviceButton extends StatelessWidget {
           Text(
             title,
             softWrap: false,
-            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Colors.grey[800],
               fontSize: 15,

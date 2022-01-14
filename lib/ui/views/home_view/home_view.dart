@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sync_home/shared/services/ui_services/device_ui_service.dart';
 import 'package:sync_home/ui/components/button/buttons.dart';
 import 'package:sync_home/ui/components/weather_card/weather_card.dart';
 import 'package:sync_home/ui/shared/all_device_view/all_device_view.dart';
@@ -76,52 +77,9 @@ class HomeView extends StatelessWidget {
             children: [
               Wrap(
                 spacing: 10,
-                children: const [
-                  CircularDeviceButton(
-                    title: 'Lights',
-                    icon: Icons.wb_sunny_outlined,
-                    color: Colors.amber,
-                  ),
-                  CircularDeviceButton(
-                    title: 'CCTV',
-                    icon: Icons.camera_outdoor_outlined,
-                    color: Colors.purple,
-                  ),
-                  CircularDeviceButton(
-                    title: 'Wi-Fi',
-                    icon: Icons.wifi_outlined,
-                    color: Colors.blue,
-                  ),
-                  CircularDeviceButton(
-                    title: 'Media',
-                    icon: Icons.speaker_outlined,
-                    color: Colors.green,
-                  ),
-                  CircularDeviceButton(
-                    title: 'Thermostat',
-                    icon: Icons.thermostat_outlined,
-                    color: Colors.pink,
-                  ),
-                  CircularDeviceButton(
-                    title: 'CCTV',
-                    icon: Icons.camera_outdoor_outlined,
-                    color: Colors.purple,
-                  ),
-                  CircularDeviceButton(
-                    title: 'Wi-Fi',
-                    icon: Icons.wifi_outlined,
-                    color: Colors.blue,
-                  ),
-                  CircularDeviceButton(
-                    title: 'Media',
-                    icon: Icons.speaker_outlined,
-                    color: Colors.green,
-                  ),
-                  CircularDeviceButton(
-                    title: 'Thermostat',
-                    icon: Icons.thermostat_outlined,
-                    color: Colors.pink,
-                  ),
+                children: [
+                  for (var device in DeviceUiService.devices)
+                    CircularDeviceButton(device: device)
                 ],
               ),
             ],

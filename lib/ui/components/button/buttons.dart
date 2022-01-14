@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sync_home/shared/models/device_model.dart';
 
 class CircularDeviceButton extends StatelessWidget {
   const CircularDeviceButton({
     Key? key,
-    required this.title,
-    required this.icon,
-    required this.color,
+    required this.device,
   }) : super(key: key);
 
-  final String title;
-  final IconData icon;
-  final MaterialColor color;
+  final DeviceModel device;
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +18,14 @@ class CircularDeviceButton extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 30,
-            backgroundColor: color[100],
+            backgroundColor: device.color[100],
             child: IconButton(
+              alignment: Alignment.topCenter,
+              iconSize: 30,
               onPressed: () {},
               icon: Icon(
-                icon,
+                device.icon,
                 color: Colors.black,
-                size: 30,
               ),
             ),
           ),
@@ -35,7 +33,7 @@ class CircularDeviceButton extends StatelessWidget {
             height: 10,
           ),
           Text(
-            title,
+            device.title,
             softWrap: false,
             style: TextStyle(
               color: Colors.grey[800],

@@ -47,22 +47,47 @@ class AllDeviceView extends StatelessWidget {
             color: Colors.pink,
           ),
           CircularDeviceButton(
-            title: 'CCTV',
-            icon: Icons.camera_outdoor_outlined,
-            color: Colors.purple,
-          ),
-          CircularDeviceButton(
-            title: 'Wi-Fi',
+            title: 'Fridge',
             icon: Icons.wifi_outlined,
             color: Colors.blue,
           ),
           CircularDeviceButton(
-            title: 'Media',
+            title: 'Freezer',
             icon: Icons.speaker_outlined,
             color: Colors.green,
           ),
           CircularDeviceButton(
-            title: 'Thermostat',
+            title: 'Microwave',
+            icon: Icons.thermostat_outlined,
+            color: Colors.pink,
+          ),
+          CircularDeviceButton(
+            title: 'Computer',
+            icon: Icons.thermostat_outlined,
+            color: Colors.pink,
+          ),
+          CircularDeviceButton(
+            title: 'Fans',
+            icon: Icons.thermostat_outlined,
+            color: Colors.pink,
+          ),
+          CircularDeviceButton(
+            title: 'Air-Con',
+            icon: Icons.thermostat_outlined,
+            color: Colors.pink,
+          ),
+          CircularDeviceButton(
+            title: 'Switches',
+            icon: Icons.thermostat_outlined,
+            color: Colors.pink,
+          ),
+          CircularDeviceButton(
+            title: 'Clocks',
+            icon: Icons.thermostat_outlined,
+            color: Colors.pink,
+          ),
+          CircularDeviceButton(
+            title: 'Oven',
             icon: Icons.thermostat_outlined,
             color: Colors.pink,
           ),

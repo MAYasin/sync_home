@@ -34,7 +34,7 @@ class WeatherView extends StatelessWidget {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 90.58 / 100,
+              height: MediaQuery.of(context).size.height * 90.53 / 100,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -64,8 +64,8 @@ class WeatherView extends StatelessWidget {
                                     .date!
                                     .toIso8601String())),
                                 style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.normal,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                               const SizedBox(

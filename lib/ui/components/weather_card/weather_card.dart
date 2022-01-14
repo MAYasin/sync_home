@@ -30,153 +30,163 @@ class WeatherCard extends StatelessWidget {
           ),
           color: Colors.grey[200],
           elevation: 0,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: _.getWeather().isEmpty
-                ? const LoadingWeatherScreen()
-                : Row(
-                    children: [
-                      Image.asset(
-                        _.getWeather().isNotEmpty
-                            ? WeatherUIService.getWeather(
-                                _.getWeather().first.weatherIcon.toString())
-                            : 'assets/icon/weather/mist.png',
-                        width: 120,
-                        height: 120,
-                        scale: 0.5,
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.location_pin,
-                              ),
-                              const SizedBox(
-                                width: 2,
-                              ),
-                              Text(
-                                _.getWeather().isNotEmpty
-                                    ? _.getWeather().first.areaName.toString() +
-                                        ', ' +
-                                        _.getWeather().first.country.toString()
-                                    : 'error',
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
+          child: Obx(
+            () => Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: _.getWeather().isEmpty
+                  ? const LoadingWeatherScreen()
+                  : Row(
+                      children: [
+                        Image.asset(
+                          _.getWeather().isNotEmpty
+                              ? WeatherUIService.getWeather(
+                                  _.getWeather().first.weatherIcon.toString())
+                              : 'assets/icon/weather/mist.png',
+                          width: 120,
+                          height: 120,
+                          scale: 0.5,
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.location_pin,
                                 ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                _.getWeather().isNotEmpty
-                                    ? _
-                                        .getWeather()
-                                        .first
-                                        .temperature!
-                                        .celsius!
-                                        .toStringAsFixed(1)
-                                        .toString()
-                                    : 'error',
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
+                                const SizedBox(
+                                  width: 2,
                                 ),
-                              ),
-                              Text(
-                                '°C',
-                                style: TextStyle(
-                                  color: Colors.grey[700],
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
+                                Text(
+                                  _.getWeather().isNotEmpty
+                                      ? _
+                                              .getWeather()
+                                              .first
+                                              .areaName
+                                              .toString() +
+                                          ', ' +
+                                          _
+                                              .getWeather()
+                                              .first
+                                              .country
+                                              .toString()
+                                      : 'error',
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(width: 40),
-                              Column(
-                                children: [
-                                  Text(
-                                    'Avg. Inside',
-                                    style: TextStyle(
-                                      color: Colors.grey[900],
-                                      fontSize: 12,
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  _.getWeather().isNotEmpty
+                                      ? _
+                                          .getWeather()
+                                          .first
+                                          .temperature!
+                                          .celsius!
+                                          .toStringAsFixed(1)
+                                          .toString()
+                                      : 'error',
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  '°C',
+                                  style: TextStyle(
+                                    color: Colors.grey[700],
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(width: 40),
+                                Column(
+                                  children: [
+                                    Text(
+                                      'Avg. Inside',
+                                      style: TextStyle(
+                                        color: Colors.grey[900],
+                                        fontSize: 12,
+                                      ),
                                     ),
-                                  ),
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        '19',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold,
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          '19',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        '°C',
-                                        style: TextStyle(
-                                          color: Colors.grey[700],
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
+                                        Text(
+                                          '°C',
+                                          style: TextStyle(
+                                            color: Colors.grey[700],
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 10),
-                          Card(
-                            margin: const EdgeInsets.all(0),
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                            color: Colors.lightBlue[600],
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 20,
-                                top: 12,
-                                right: 20,
-                                bottom: 12,
+                            const SizedBox(height: 10),
+                            Card(
+                              margin: const EdgeInsets.all(0),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(40),
                               ),
-                              child: Text(
-                                _.getWeather().isNotEmpty
-                                    ? _
-                                            .getWeather()
-                                            .first
-                                            .weatherMain
-                                            .toString() +
-                                        ', ' +
-                                        _
-                                            .getWeather()
-                                            .first
-                                            .weatherDescription
-                                            .toString()
-                                    : 'error',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
+                              color: Colors.lightBlue[600],
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 20,
+                                  top: 12,
+                                  right: 20,
+                                  bottom: 12,
+                                ),
+                                child: Text(
+                                  _.getWeather().isNotEmpty
+                                      ? _
+                                              .getWeather()
+                                              .first
+                                              .weatherMain
+                                              .toString() +
+                                          ', ' +
+                                          _
+                                              .getWeather()
+                                              .first
+                                              .weatherDescription
+                                              .toString()
+                                      : 'error',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                          ],
+                        ),
+                      ],
+                    ),
+            ),
           ),
         ),
       );

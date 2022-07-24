@@ -7,7 +7,7 @@ import 'package:sync_home/ui/components/weather_card/weather_card_controller.dar
 import 'package:sync_home/ui/shared/weather_view/weather_view.dart';
 
 class WeatherCard extends StatefulWidget {
-  WeatherCard({
+  const WeatherCard({
     Key? key,
   }) : super(key: key);
 

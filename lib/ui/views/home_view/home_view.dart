@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sync_home/shared/services/ui_services/device_ui_service.dart';
 import 'package:sync_home/ui/components/button/buttons.dart';
@@ -31,7 +30,7 @@ class HomeView extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            WeatherCard(),
+            const WeatherCard(),
           ],
         ),
         const SizedBox(

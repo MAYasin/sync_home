@@ -26,8 +26,6 @@ ThemeData theme = ThemeData(
       onBackground: primaryColor,
       surface: Colors.white,
       onSurface: primaryColor,
-      primaryVariant: primaryColor,
-      secondaryVariant: primaryColor,
     ),
   ),
   colorScheme: ColorScheme(
@@ -41,20 +39,18 @@ ThemeData theme = ThemeData(
     onSecondary: Colors.white,
     surface: Colors.white,
     onSurface: primaryColor,
-    primaryVariant: primaryColor,
-    secondaryVariant: primaryColor,
     brightness: Brightness.light,
   ),
 );
 
-Color primaryColor = const Color(0xFFF333D54);
-Color primaryPurpleColor = const Color(0xFFF7460EE);
-Color successColor = const Color(0xFFF22C6AB);
-Color dangerColor = const Color(0xfffEF6E6E);
-Color warningColor = const Color(0xfffFFBC34);
-Color infoColor = const Color(0xfff4798E8);
-Color secondaryColor = const Color(0xfff6C757D);
-Color secondaryDarkerColor = const Color(0xfff5A6268);
+Color primaryColor = const Color(0xfff333d54);
+Color primaryPurpleColor = const Color(0xfff7460ee);
+Color successColor = const Color(0xfff22c6ab);
+Color dangerColor = const Color(0xfffef6e6e);
+Color warningColor = const Color(0xfffffbc34);
+Color infoColor = const Color(0xfff4798e8);
+Color secondaryColor = const Color(0xfff6c757d);
+Color secondaryDarkerColor = const Color(0xfff5a6268);
 Color primaryWhiteColor = Colors.white;
 Color primaryBackgroundColor = const Color.fromARGB(1, 246, 246, 246);
 

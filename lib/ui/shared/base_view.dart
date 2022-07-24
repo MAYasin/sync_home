@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sync_home/constants/style.dart';
 
 class BaseView extends StatelessWidget {
   const BaseView(
